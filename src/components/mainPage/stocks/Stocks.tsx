@@ -21,7 +21,7 @@ const Stocks: React.FC = () => {
   };
 
   return (
-    <div className={s.root}>
+    <section className={s.root}>
       <div className="container">
         <div className={s.head}>
           <h2>Все акции</h2>
@@ -61,7 +61,7 @@ const Stocks: React.FC = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 };
 

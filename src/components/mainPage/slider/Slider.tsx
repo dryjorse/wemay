@@ -17,7 +17,7 @@ const Slider: React.FC = () => {
   };
 
   return (
-    <div className={s.root}>
+    <section className={s.root}>
       <div className={s.container}>
         {/*@ts-ignore*/}
         <Carousel
@@ -46,7 +46,7 @@ const Slider: React.FC = () => {
           ))}
         </Carousel>
       </div>
-    </div>
+    </section>
   );
 };
 

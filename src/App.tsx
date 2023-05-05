@@ -1,16 +1,6 @@
-import React from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { router } from "./router/router";
-import Header from "./components/header/Header";
-
-const MainLayout: React.FC = () => {
-  return (
-    <>
-      <Header />
-      <Outlet />
-    </>
-  );
-};
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
   return (

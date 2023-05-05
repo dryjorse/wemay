@@ -45,3 +45,9 @@ input {
   margin: 0 auto;
   max-width: 1175px;
 }
+.descr {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #4F4F4F;
+}

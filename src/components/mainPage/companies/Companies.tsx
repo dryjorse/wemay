@@ -18,7 +18,7 @@ const Companies: React.FC = () => {
   };
 
   return (
-    <div className={s.root}>
+    <section className={s.root}>
       <div className="container">
         <h2>Компании</h2>
       </div>
@@ -48,7 +48,7 @@ const Companies: React.FC = () => {
         </Carousel>
         <Link className={s.link} to="/companies">Показать все</Link>
       </div>
-    </div>
+    </section>
   );
 };
 

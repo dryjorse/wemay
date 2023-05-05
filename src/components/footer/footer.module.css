@@ -1,0 +1,37 @@
+.root {
+  padding: 60px 0 24px;
+  background: #F3F3F3;
+}
+.descr {
+  display: block;
+  margin: 16px 0 60px;
+}
+.items {
+  margin-bottom: 75px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 970px;
+}
+.item li {
+  margin-top: 24px;
+}
+.item h3 {
+  font-size: 20px;
+  line-height: 24px;
+}
+.item a {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.social__list {
+  display: flex;
+  gap: 16px;
+}
+.copyright {
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #4F4F4F;
+}

@@ -1,0 +1,37 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+.item {
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background: #F3F3F3;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
+  font-family: 'Mulish';
+  outline: none;
+}
+.item.active {
+  background: #089449;
+  color: white;
+}
+@media only screen and (max-width: 425px) {
+  .item {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background: #BDBDBD;
+    font-size: 16px;
+    line-height: 16px;
+    color: white;
+  }
+  .item.active {
+    border: 1px solid #BDBDBD;
+    background: white;
+    color: black;
+  }
+}

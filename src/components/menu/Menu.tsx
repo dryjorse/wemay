@@ -11,9 +11,9 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({isActive, setIsActive}) => {
   return (
-    <div className={isActive ? s.active : ''}>
+    <div className={`${isActive ? s.active : ''} ${s.root}`}>
       <div className={s.content}>
-        <div className={s.menu}>
+        <nav className={s.menu}>
           <ul className={s.top__list}>
             <li>
               <Link className={s.link} to="/">
@@ -48,7 +48,7 @@ const Menu: React.FC<MenuProps> = ({isActive, setIsActive}) => {
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
         <button onClick={setIsActive} className={s.cross}>
           <Cross />
         </button>

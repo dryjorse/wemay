@@ -1,8 +1,8 @@
-import CocaCola from "../assets/images/mainPage/coca-cola.svg";
-import Pepsi from "../assets/images/mainPage/pepsi.svg";
-import Wildberries from "../assets/images/mainPage/wildberries.svg";
-import Shoro from "../assets/images/mainPage/shoro.svg";
-import Kulikov from "../assets/images/mainPage/kulikov.svg";
+// import CocaCola from "../assets/images/mainPage/coca-cola.svg";
+// import Pepsi from "../assets/images/mainPage/pepsi.svg";
+// import Wildberries from "../assets/images/mainPage/wildberries.svg";
+// import Shoro from "../assets/images/mainPage/shoro.svg";
+// import Kulikov from "../assets/images/mainPage/kulikov.svg";
 import Cafe from "../assets/images/menu/cafe.png";
 import Entertaintment from "../assets/images/menu/entertainment.png";
 import Things from "../assets/images/menu/things.png";
@@ -46,39 +46,33 @@ export const menuList: IMenuItem[] = [
   },
 ];
 
-interface ICompanyItem {
-  photo: string;
-  stocks: number;
-  discountPercentage: number;
-}
-
-export const companiesList: ICompanyItem[] = [
-  {
-    photo: CocaCola,
-    stocks: 14,
-    discountPercentage: 50,
-  },
-  {
-    photo: Pepsi,
-    stocks: 14,
-    discountPercentage: 50,
-  },
-  {
-    photo: Wildberries,
-    stocks: 14,
-    discountPercentage: 50,
-  },
-  {
-    photo: Shoro,
-    stocks: 14,
-    discountPercentage: 50,
-  },
-  {
-    photo: Kulikov,
-    stocks: 14,
-    discountPercentage: 50,
-  },
-];
+// export const companiesList: ICompanyItem[] = [
+//   {
+//     photo: CocaCola,
+//     stocks: 14,
+//     discountPercentage: 50,
+//   },
+//   {
+//     photo: Pepsi,
+//     stocks: 14,
+//     discountPercentage: 50,
+//   },
+//   {
+//     photo: Wildberries,
+//     stocks: 14,
+//     discountPercentage: 50,
+//   },
+//   {
+//     photo: Shoro,
+//     stocks: 14,
+//     discountPercentage: 50,
+//   },
+//   {
+//     photo: Kulikov,
+//     stocks: 14,
+//     discountPercentage: 50,
+//   },
+// ];
 
 interface IMenuSecondItem {
   title: string;

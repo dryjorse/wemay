@@ -1,0 +1,31 @@
+.cart {
+  padding: 0 12px;
+  width: 205px;
+  height: 280px;
+  background: #ffffff;
+  border: 1px solid #f3f3f3;
+  border-radius: 24px;
+  text-align: start;
+  transition: all 0.1s ease-in-out;
+}
+.cart:hover {
+  filter: drop-shadow(0px 4px 13px rgba(0, 0, 0, 0.15));
+}
+.cart img {
+  width: 180px;
+  height: 170px;
+  pointer-events: none;
+}
+.cart span {
+  display: inline-block;
+  color: #828282;
+}
+.cart b {
+  color: black;
+}
+.cart__content {
+  padding: 0 8px;
+}
+.cart__content span:not(:last-child) {
+  margin-bottom: 16px;
+}

@@ -7,7 +7,16 @@ const MainLayout: React.FC = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

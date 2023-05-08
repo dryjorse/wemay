@@ -2,23 +2,28 @@ import React, { useState } from "react";
 import Input from "../ui/input/Input";
 import Button from "../ui/button/Button";
 import { Link } from "react-router-dom";
+import useMatchMedia from "use-match-media";
 import { ReactComponent as Stock } from "../../assets/images/header/stock.svg";
 import { ReactComponent as Bell } from "../../assets/images/header/bell.svg";
 import { ReactComponent as Smile } from "../../assets/images/header/smile.svg";
 import { ReactComponent as Burger } from "../../assets/images/header/burger.svg";
 import { ReactComponent as Logo } from "../../assets/images/common/logo.svg";
+import { ReactComponent as LogoMobile } from "../../assets/images/common/logo-mobile.svg";
+import { ReactComponent as Navigation } from "../../assets/images/header/navigation.svg";
 import { ReactComponent as Person } from "../../assets/images/header/person.svg";
 import { ReactComponent as ArrowDown } from "../../assets/images/header/arrow-down.svg";
+
 import { menuList } from "../../utillities/utillities";
 import Menu from "../menu/Menu";
 import s from "./header.module.css";
 
 const Header: React.FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
+  const isTable = useMatchMedia("(max-width: 768px)");
 
   const toggleMenuActive = () => {
-    setIsMenuActive((bool) => {
-      document.body.style.overflow = !bool ? 'hidden' : ''
+    if(!isTable) setIsMenuActive((bool) => {
+      document.body.style.overflow = !bool ? "hidden" : "";
       return !bool;
     });
   };
@@ -40,19 +45,34 @@ const Header: React.FC = () => {
             <span>Бесплатно</span>
           </Link>
         </div>
-        <div className={s.line__one}></div>
-        <div className={s.middle}>
-          <div className={`${s.logo} ${isMenuActive ? s.hidden : ''}`}>
+        <div className={s.top__mobile}>
+          <div className={s.logo__mobile}>
             <button onClick={toggleMenuActive}>
               <Burger />
             </button>
-            <Logo />
+            <Link to="/">
+              <LogoMobile />
+            </Link>
+          </div>
+          <button>
+            <Navigation />
+          </button>
+        </div>
+        <div className={s.line__one}></div>
+        <div className={s.middle}>
+          <div className={`${s.logo} ${isMenuActive ? s.hidden : ""}`}>
+            <button onClick={toggleMenuActive}>
+              <Burger />
+            </button>
+            <Link to="/">
+              <Logo />
+            </Link>
           </div>
           <div className={s.search}>
             <Input option="search" placeholder="Поиск" />
           </div>
-          <Button link="/auth">
-            <div className={s.auth__button}>
+          <Button className={s.auth__button} link="/auth">
+            <div>
               <Person />
               <span>Войти</span>
             </div>

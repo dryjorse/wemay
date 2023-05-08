@@ -98,3 +98,8 @@
   top: 40px;
   right: -16px;
 }
+@media only screen and (max-width: 768px) {
+  .root {
+    display: none;
+  }
+}

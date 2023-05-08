@@ -1,4 +1,4 @@
-declare module "react-slick" {
+declare module "use-match-media" {
   const content: any;
   export default content;
 }

@@ -6,26 +6,15 @@
   max-width: 1375px;
   text-align: center;
 }
-:global(.rec-slider-container) {
-  margin: 0 63px !important;
-}
-.cart img {
-  pointer-events: none;
-}
-.cart span {
-  display: inline-block;
-  color: #828282;
-}
-.cart b {
-  color: black;
-}
-.cart__content {
-  padding: 0 8px;
-}
-.cart__content span:not(:last-child) {
-  margin-bottom: 16px;
-}
 .link {
   font-weight: 500;
-  color: #2F80ED;
+  color: #2f80ed;
+}
+@media only screen and (max-width: 768px) {
+  .root {
+    padding: 45px 0 60px;
+  }
+  .link {
+    display: none;
+  }
 }

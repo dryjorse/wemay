@@ -1,4 +1,4 @@
-import { RootState, useAppDispatch } from "../store";
+import { RootState } from "../store";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { $api } from "../../http";
 

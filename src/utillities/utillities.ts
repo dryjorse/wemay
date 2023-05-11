@@ -131,3 +131,171 @@ export const menuSecondList: IMenuSecondItem[] = [
     photo: Work,
   },
 ];
+
+interface IProfileMenuLink {
+  title: string;
+  link: string;
+}
+
+export interface IProfileMenuItem {
+  title: string;
+  items: IProfileMenuLink[];
+}
+
+type IProfileMenuList = IProfileMenuItem[];
+
+export const profileMenuList: IProfileMenuList = [
+  {
+    title: "Кафе и рестораны",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Развлечения",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Личные вещи",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Красота и уход",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Транспорт",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Недвижимость",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },  
+  {
+    title: "Медицина",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Работа",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Услуги",
+    items: [
+      {
+        title: "Рестораны",
+        link: "/",
+      },
+      {
+        title: "Банкеты",
+        link: "/",
+      },
+      {
+        title: "Доставка",
+        link: "/",
+      },
+    ],
+  },
+];

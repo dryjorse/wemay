@@ -12,7 +12,7 @@ import s from "./stocks.module.css";
 
 const Stocks: React.FC = () => {
   const dispatch = useDispatch();
-  const { data, status, limit, count, offset } = useSelector(
+  const { data, status, count, offset } = useSelector(
     (store: RootState) => store.stocks
   );
   const isTablet = useMatchMedia("(max-width: 768px)");

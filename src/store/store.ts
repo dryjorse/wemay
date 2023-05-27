@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import stocksSlice from "./slices/stocksSlice";
 import companiesSlice from "./slices/companiesSlice";
-import porfileSlice from "./slices/porfileSlice";
+import porfileSlice from "./slices/profileSlice";
 
 export const store = configureStore({
   reducer: {

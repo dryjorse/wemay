@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { ReactComponent as LeftArrow } from "../../../assets/images/pagination/left-arrow.svg";
+import { ReactComponent as RightArrow } from "../../../assets/images/pagination/right-arrow.svg";
 import s from "./pagination.module.css";
 
 interface PaginationProps {
@@ -88,19 +90,44 @@ const Pagination: React.FC<PaginationProps> = ({
     if (typeof newPage === "number") change?.(newPage);
   };
 
+  useEffect(() => {
+    if(limit && page > limit) handlePage(limit)
+  }, [page, limit])
+
+  const goNext = () => {
+    if (page + 1 <= limit) handlePage(page + 1);
+  };
+
+  const goBack = () => {
+    if (page - 1 >= 1) handlePage(page - 1);
+  };
+
+  const isNear = (item: number | string) => {
+    if (page + 1 === item || page - 1 === item) return s.item__near;
+    return "";
+  };
+
   return (
     <ul className={s.pagination}>
+      <button onClick={goBack}>
+        <LeftArrow />
+      </button>
       {pages.map((item, key) => (
         <li key={key}>
           <button
             name={item + ""}
             onClick={(e: any) => handlePage(e.target.name)}
-            className={`${s.item} ${item === page ? s.active : null}`}
+            className={`${s.item} ${item === page ? s.active : null} ${isNear(
+              item
+            )}`}
           >
             {item}
           </button>
         </li>
       ))}
+      <button onClick={goNext}>
+        <RightArrow />
+      </button>
     </ul>
   );
 };

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import ProfileMenu from "../profileMenu/ProfileMenu";
+// @ts-ignore
+import { Transition } from "react-transition-group";
 import Menu from "../menu/Menu";
 import Input from "../ui/input/Input";
-import Button from "../ui/button/Button";
-import useMatchMedia from "use-match-media";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 import { ReactComponent as Stock } from "../../assets/images/header/stock.svg";
 import { ReactComponent as Bell } from "../../assets/images/header/bell.svg";
 import { ReactComponent as Smile } from "../../assets/images/header/smile.svg";
@@ -14,18 +15,19 @@ import { ReactComponent as LogoMobile } from "../../assets/images/common/logo-mo
 import { ReactComponent as Navigation } from "../../assets/images/header/navigation.svg";
 import { ReactComponent as Person } from "../../assets/images/header/person.svg";
 import { ReactComponent as ArrowDown } from "../../assets/images/header/arrow-down.svg";
-import { ReactComponent as Profile } from "../../assets/images/header/profile.svg";
-import { ReactComponent as Favourites } from "../../assets/images/header/favourites.svg";
-import { ReactComponent as Logout } from "../../assets/images/header/logout.svg";
+import ava from "../../assets/images/common/ava.svg";
 import { menuList } from "../../utillities/utillities";
+import ProfileTooltip from "./profileTooltip/ProfileTooltip";
 import s from "./header.module.css";
 
-const Header: React.FC = () => {
-  const isTable = useMatchMedia("(max-width: 768px)");
-  const isSmallTable = useMatchMedia("(max-width: 600px)");
+interface HeaderProps {
+  openLogin: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ openLogin }) => {
+  const { isAuth, profile } = useSelector((state: RootState) => state.profile);
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [isAuthActive, setAuthActive] = useState(false);
-  const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
   const authWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,22 +48,14 @@ const Header: React.FC = () => {
   }, []);
 
   const toggleMenuActive = () => {
-    if (!isTable)
-      setIsMenuActive((bool) => {
-        document.body.style.overflow = !bool ? "hidden" : "";
-        return !bool;
-      });
+    setIsMenuActive((bool) => {
+      document.body.style.overflow = !bool ? "hidden" : "";
+      return !bool;
+    });
   };
 
   const toggleIsAuthActive = () => {
     setAuthActive((bool) => !bool);
-  };
-
-  const toggleIsProfileMenuActive = () => {
-    setIsProfileMenuActive((bool) => {
-      document.body.style.overflow = !bool ? "hidden" : "";
-      return !bool;
-    });
   };
 
   return (
@@ -83,11 +77,7 @@ const Header: React.FC = () => {
         </div>
         <div className={s.top__mobile}>
           <div className={s.logo__mobile}>
-            <button
-              onClick={
-                isSmallTable ? toggleIsProfileMenuActive : toggleMenuActive
-              }
-            >
+            <button onClick={toggleMenuActive}>
               <Burger />
             </button>
             <Link to="/">
@@ -98,20 +88,7 @@ const Header: React.FC = () => {
             <button onClick={toggleIsAuthActive}>
               <Navigation />
             </button>
-            <div className={`${s.auth__block} ${isAuthActive ? s.active : ""}`}>
-              <Link to="/profile" className={s.auth__link}>
-                <Profile />
-                <span>Мой профиль</span>
-              </Link>
-              <Link to="/favourites" className={s.auth__link}>
-                <Favourites />
-                <span>Избранное</span>
-              </Link>
-              <button className={s.auth__link}>
-                <Logout />
-                <span>Выйти</span>
-              </button>
-            </div>
+            <ProfileTooltip isActive={isAuthActive} />
           </div>
         </div>
         <div className={s.line__one}></div>
@@ -127,12 +104,23 @@ const Header: React.FC = () => {
           <div className={s.search}>
             <Input option="search" placeholder="Поиск" />
           </div>
-          <Button className={s.auth__button} link="/auth">
-            <div>
-              <Person />
-              <span>Войти</span>
-            </div>
-          </Button>
+          {isAuth ? (
+            <button className={s.profile}>
+              <h3>{profile.name}</h3>
+              <img
+                className={s.ava}
+                src={profile.profile_picture || ava}
+                alt="ava"
+              />
+            </button>
+          ) : (
+            <button onClick={openLogin} className={`btn ${s.auth__button}`}>
+              <div>
+                <Person />
+                <span>Войти</span>
+              </div>
+            </button>
+          )}
         </div>
       </div>
       <ul className={s.menu__list}>
@@ -143,13 +131,9 @@ const Header: React.FC = () => {
           </li>
         ))}
       </ul>
-      <Menu isActive={isMenuActive} setIsActive={toggleMenuActive} />
-      {isSmallTable && (
-        <ProfileMenu
-          isActive={isProfileMenuActive}
-          setIsActive={toggleIsProfileMenuActive}
-        />
-      )}
+      <Transition in={isMenuActive} timeout={500} mountOnEnter unmountOnExit>
+        {(state: string) => <Menu isActive={isMenuActive} setIsActive={toggleMenuActive} animateKey={state}/>}
+      </Transition>
     </header>
   );
 };

@@ -1,5 +1,6 @@
 .pagination {
   display: flex;
+  align-items: center;
   gap: 8px;
   outline: none;
 }
@@ -10,29 +11,39 @@
   align-items: center;
   width: 56px;
   height: 56px;
-  background: #F3F3F3;
   transition: all 0.3s ease-in-out;
   font-size: 18px;
-  font-family: 'Mulish';
+  font-family: "Mulish";
   outline: none;
+}
+.item__near {
+  background: #f3f3f3;
 }
 .item.active {
   background: #089449;
   color: white;
 }
+.pagination > button:first-child {
+  margin-right: 20px;
+}
+.pagination > button:last-child {
+  margin-left: 20px;
+}
 @media only screen and (max-width: 425px) {
   .item {
-    border-radius: 50%;
+    border-radius: 16px;
     width: 36px;
     height: 36px;
-    background: #BDBDBD;
     font-size: 16px;
     line-height: 16px;
-    color: white;
+    color: black;
   }
   .item.active {
-    border: 1px solid #BDBDBD;
-    background: white;
-    color: black;
+    border: 1px solid #bdbdbd;
+    background: #089449;
+    color: white;
+  }
+  .item__near {
+    background: none;
   }
 }

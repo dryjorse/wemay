@@ -1,13 +1,37 @@
 .root {
-  border: 1px solid #333333;
-  border-radius: 100px;
-  padding: 17px 24px;
+  border: 1px solid #dddddf;
+  border-radius: 24px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
+  background: white;
+  position: relative;
+}
+.search {
+  border-radius: 100px;
+  border: 1px solid #333333;
+  padding: 17px 24px;
+  background: none;
+}
+.error {
+  border: 1px solid red;
 }
 .root input {
   flex: 1 1 100%;
-  font-weight: 500;
   line-height: 20px;
+}
+.root input::placeholder {
+  color: #333333;
+}
+.search input {
+  font-weight: 500;
+}
+.placeholder {
+  position: absolute;
+  line-height: 20px;
+  pointer-events: none;
+}
+.placeholder span {
+  color: #EB5757;
 }

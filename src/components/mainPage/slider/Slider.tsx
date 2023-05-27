@@ -1,9 +1,9 @@
 import React from "react";
-import Button from "../../ui/button/Button";
 import SlidePhoto from "../../../assets/images/mainPage/slide-photo.png";
 import Carousel, { RenderArrowProps } from "react-elastic-carousel";
 import { ReactComponent as ArrowLeft } from "../../../assets/images/mainPage/arrow-left.svg";
 import { ReactComponent as ArrowRight } from "../../../assets/images/mainPage/arrow-right.svg";
+import { Link } from "react-router-dom";
 import s from "./slider.module.css";
 
 const Slider: React.FC = () => {
@@ -32,11 +32,11 @@ const Slider: React.FC = () => {
             <div key={key} className={s.slide}>
               <div className={s.slide__wrapper}>
                 <div className={s.slide__content}>
-                  <h3>Поддарки для неё и для него</h3>
+                  <h3>Подарки для неё и для него</h3>
                   <span>Покупай прямо сейчас</span>
-                  <Button link="/" padding="14px 49px">
+                  <Link to="/" className={`btn ${s.btn}`} >
                     Подробнее
-                  </Button>
+                  </Link>
                 </div>
                 <div className={s.slide__photo}>
                   <img src={SlidePhoto} alt="slide" />

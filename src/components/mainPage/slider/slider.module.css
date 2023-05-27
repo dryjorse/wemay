@@ -35,6 +35,9 @@
   line-height: 21px;
   color: #333333;
 }
+.btn {
+  padding: 14px 49px;
+}
 @media only screen and (max-width: 1120px) {
   .slide__content h3 {
     font-size: 32px;

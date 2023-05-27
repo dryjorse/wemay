@@ -7,12 +7,13 @@ import s from "./menu.module.css";
 interface MenuProps {
   isActive: boolean;
   setIsActive: () => void;
+  animateKey: string;
 }
 
-const Menu: React.FC<MenuProps> = ({isActive, setIsActive}) => {
+const Menu: React.FC<MenuProps> = ({isActive, setIsActive, animateKey}) => {
   return (
-    <div className={`${isActive ? s.active : ''} ${s.root}`}>
-      <div className={s.content}>
+    <div className={`${isActive ? s.active : ''} ${s.root} `}>
+      <div className={`${s.content} menu ${animateKey}`}>
         <nav className={s.menu}>
           <ul className={s.top__list}>
             <li>

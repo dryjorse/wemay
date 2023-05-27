@@ -1,5 +1,6 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
+import s from "./stockCard.module.css"
 
 const SkeletonStockCard: React.FC = () => (
   <ContentLoader 
@@ -9,6 +10,7 @@ const SkeletonStockCard: React.FC = () => (
     viewBox="0 0 540 370"
     backgroundColor="#f3f3f3"
     foregroundColor="#e3e3e3"
+    className={s.stock__item}
   >
     <rect x="0" y="0" rx="24" ry="24" width="540" height="260" /> 
     <rect x="0" y="283" rx="29" ry="29" width="420" height="48" /> 

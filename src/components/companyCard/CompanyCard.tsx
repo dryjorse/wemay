@@ -1,26 +1,19 @@
 import React from "react";
+import { ICompany } from "../../store/slices/companiesSlice";
 import s from "./companyCard.module.css";
 
-interface CompanyCardProps {
-  photo: string;
-  stocks: number;
-  discountPercentage: number;
-}
-
-const CompanyCard: React.FC<CompanyCardProps> = ({
-  photo,
-  stocks,
-  discountPercentage,
-}) => {
+const CompanyCard: React.FC<ICompany> = ({ stock_count, discount, image }) => {
   return (
     <div className={s.cart}>
-      <img src={photo} alt="company" />
+      <div className={s.cart__img}>
+        <img src={image} alt="company" />
+      </div>
       <div className={s.cart__content}>
         <span>
-          Акция: <b>{stocks}</b>
+          Акция: <b>{stock_count}</b>
         </span>
         <span>
-          Скидки до <b>{discountPercentage}%</b>
+          Скидки до <b>{Math.floor(discount)}%</b>
         </span>
       </div>
     </div>

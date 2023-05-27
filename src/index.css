@@ -50,6 +50,9 @@ input {
   font-size: 16px;
   font-family: "Montserrat";
 }
+img, svg {
+  outline: none;
+}
 .App {
   overflow: hidden;
 }
@@ -76,5 +79,38 @@ input {
 @media only screen and (max-width: 1120px) {
   .rec-slider-container {
     margin: 0 !important;
+  }
+}
+.btn {
+  padding: 16px 24px;
+  display: block;
+  width: fit-content;
+  border: 1px solid #333333;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+}
+.btn-disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.menu.entering {
+  animation: show-burger-frame 0.3s forwards;
+}
+.menu.exiting {
+  animation: show-burger-frame 0.3s reverse forwards;
+}
+
+@keyframes show-burger-frame {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%);
   }
 }

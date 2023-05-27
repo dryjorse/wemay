@@ -1,20 +1,22 @@
 import { RootState } from "../store";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { $api } from "../../http";
+import axios from "axios";
 
-interface Stock {
+export interface Stock {
   id: number;
-  title: string;
-  image: string;
+  name: string;
+  description: string;
   price: number;
-  discountPercent: number;
-  likes: number;
+  discount: number;
+  image: string;
+  get_likes: number;
 }
 
 interface StocksData {
   count: number;
   limit: number;
-  result: Stock[];
+  results: Stock[];
 }
 
 export const getStocks = createAsyncThunk<
@@ -23,11 +25,15 @@ export const getStocks = createAsyncThunk<
   { state: RootState }
 >("stocks", async (_, { getState }) => {
   const { stocks } = getState();
-  const { data } = await $api("stocks", {
-    params: { offset: stocks.offset, limit: stocks.offset + 6 },
+  const { data } = await axios.get("http://13.49.228.144/api/v1/posts/promotion/", {
+    params: { offset: stocks.offset, limit: stocks.offset + stocks.limit },
   });
   return data;
 });
+
+export const setStockLike = createAsyncThunk('like', async (id: number) => {
+  await $api(`/posts/promotion/${id}/like/`)
+})  
 
 interface StocksSliceState {
   data: Stock[];
@@ -40,7 +46,7 @@ interface StocksSliceState {
 const initialState: StocksSliceState = {
   data: [],
   count: 0,
-  limit: 0,
+  limit: 6,
   offset: 0,
   status: "",
 };
@@ -52,15 +58,18 @@ const stocksSlice = createSlice({
     setOffset(state, action: PayloadAction<number>) {
       state.offset = (action.payload - 1) * 6;
     },
+    setLimit(state, action: PayloadAction<number>) {
+      state.limit = action.payload;
+      console.log(state.limit)
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getStocks.pending, (state) => {
       state.status = "loading";
     });
     builder.addCase(getStocks.fulfilled, (state, action) => {
-      state.data = action.payload.result;
+      state.data = action.payload.results;
       state.count = action.payload.count;
-      state.limit = action.payload.limit;
       state.status = "success";
     });
     builder.addCase(getStocks.rejected, (state) => {
@@ -70,4 +79,4 @@ const stocksSlice = createSlice({
 });
 
 export default stocksSlice.reducer;
-export const { setOffset } = stocksSlice.actions;
+export const { setOffset, setLimit } = stocksSlice.actions;
